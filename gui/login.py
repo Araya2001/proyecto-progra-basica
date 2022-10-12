@@ -1,6 +1,6 @@
 import service.login
-from tkinter import *
 from tkinter import ttk
+import gui.menu_modules
 
 
 def draw_screen(master):
@@ -47,8 +47,13 @@ def draw_screen(master):
 def draw_success(master, user, id_user):
     frm = ttk.Frame(master, padding=40)
     frm.grid()
+
+    def on_click_ok():
+        frm.destroy()
+        gui.menu_modules.ventana_principal(master)
+
     ttk.Label(frm, text="Bienvenido, " + user + " - " + id_user).grid(column=0, row=0)
-    ttk.Button(frm, text="ok", command=print("Do on next")).grid(column=0, row=1, padx=1, pady=3)
+    ttk.Button(frm, text="ok", command=on_click_ok).grid(column=0, row=1, padx=1, pady=3)
 
 
 def draw_error(master, reason):
