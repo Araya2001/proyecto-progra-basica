@@ -10,7 +10,7 @@ def promt_user():
     promt_user_is_valid = False
     int_selection = 0
     while not promt_user_is_valid:
-        int_selection = int(input("\t1. Iniciar sesión\n\t2. Crear usuario\n\t3. Salir¶"))
+        int_selection = int(input("\t1. Iniciar sesión\n\t2. Crear usuario\n\t3. Salir\n: "))
         if 1 <= int_selection <= 3:
             promt_user_is_valid = True
         else:

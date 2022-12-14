@@ -1,5 +1,4 @@
-from tkinter import Tk
-import gui.login
+import cli.menu_cli
 
 # Integrantes:
 # - Alejandro Araya Jiménez
@@ -7,6 +6,5 @@ import gui.login
 # - Sebastián Villalobos Mora
 # - Adrián Wong Busto
 
-root = Tk()
-gui.login.draw_screen(root)
-root.mainloop()
+while cli.menu_cli.start_cli() != "EXIT":
+    print("")
