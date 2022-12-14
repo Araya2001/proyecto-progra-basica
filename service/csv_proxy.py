@@ -11,9 +11,19 @@ def read(file, csv_rows):
         raise AssertionError("Variables no cuentan con el tipo de dato esperado!!!")
 
 
-def write(file, csv_rows):
+def write_append(file, csv_rows):
     try:
         with open(file, mode="a+") as csv_file:
+            csv_writer = csv.writer(csv_file, delimiter=";", quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            for scoped_row in csv_rows:
+                csv_writer.writerow(scoped_row)
+    except (AttributeError, TypeError, AssertionError):
+        raise AssertionError("Variables no cuentan con el tipo de dato esperado!!!")
+
+
+def write(file, csv_rows):
+    try:
+        with open(file, mode="w") as csv_file:
             csv_writer = csv.writer(csv_file, delimiter=";", quotechar='"', quoting=csv.QUOTE_MINIMAL)
             for scoped_row in csv_rows:
                 csv_writer.writerow(scoped_row)
@@ -42,7 +52,6 @@ def get_last_id(csv_rows):
             return -1
     except (AttributeError, TypeError, AssertionError):
         raise AssertionError("Variables no cuentan con el tipo de dato esperado!!!")
-
 
 # rows2 = []
 # read("./test-file-1.csv", rows2)

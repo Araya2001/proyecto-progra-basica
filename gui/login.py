@@ -1,4 +1,4 @@
-import service.login
+import service.login_module
 from tkinter import ttk
 import gui.menu_modules
 
