@@ -61,14 +61,18 @@ def save(sales_total,
          fecha_venta):
     try:
         last_id = service.csv_proxy.get_last_id(find_all()) + 1
-        data = [last_id, sales_total,
-                productos_adquiridos,
-                metodo_pago,
-                info_comprador,
-                info_vendedor,
-                fecha_venta]
-        service.csv_proxy.write_append(SALES_CSV_FILE, data)
-        find_all().append(data)
+        service.csv_proxy.write_append(SALES_CSV_FILE, [[last_id, sales_total,
+                                                         productos_adquiridos,
+                                                         metodo_pago,
+                                                         info_comprador,
+                                                         info_vendedor,
+                                                         fecha_venta]])
+        find_all().append([last_id, sales_total,
+                           productos_adquiridos,
+                           metodo_pago,
+                           info_comprador,
+                           info_vendedor,
+                           fecha_venta])
         return True
     except (AttributeError, TypeError, AssertionError):
         raise AssertionError("Variables no cuentan con el tipo de dato esperado!!!")

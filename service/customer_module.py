@@ -44,12 +44,14 @@ def update(id_customer, customer_name, customer_id, customer_phone_number, custo
 def save(customer_name, customer_id, customer_phone_number, customer_address):
     try:
         last_id = service.csv_proxy.get_last_id(find_all()) + 1
-        data = [last_id, customer_name,
-                customer_id,
-                customer_phone_number,
-                customer_address]
-        service.csv_proxy.write_append(CUSTOMER_CSV_FILE, data)
-        find_all().append(data)
+        service.csv_proxy.write_append(CUSTOMER_CSV_FILE, [[last_id, customer_name,
+                                                           customer_id,
+                                                           customer_phone_number,
+                                                           customer_address]])
+        find_all().append([last_id, customer_name,
+                           customer_id,
+                           customer_phone_number,
+                           customer_address])
         return True
     except (AttributeError, TypeError, AssertionError):
         raise AssertionError("Variables no cuentan con el tipo de dato esperado!!!")

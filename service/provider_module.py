@@ -48,13 +48,17 @@ def save(provider_name, provider_type, provider_route_start, provider_route_end,
          provider_is_continental):
     try:
         last_id = service.csv_proxy.get_last_id(find_all()) + 1
-        data = [last_id, provider_name,
-                provider_type,
-                provider_route_start,
-                provider_route_end,
-                provider_is_continental]
-        service.csv_proxy.write_append(PROVIDER_CSV_FILE, data)
-        find_all().append(data)
+
+        service.csv_proxy.write_append(PROVIDER_CSV_FILE, [[last_id, provider_name,
+                                                           provider_type,
+                                                           provider_route_start,
+                                                           provider_route_end,
+                                                           provider_is_continental]])
+        find_all().append([last_id, provider_name,
+                           provider_type,
+                           provider_route_start,
+                           provider_route_end,
+                           provider_is_continental])
         return True
     except (AttributeError, TypeError, AssertionError):
         raise AssertionError("Variables no cuentan con el tipo de dato esperado!!!")

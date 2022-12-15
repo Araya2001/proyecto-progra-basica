@@ -33,11 +33,11 @@ def route_mode_to_service(selection):
             print("\n-- EMPLEADOS --\n")
             if len(service.employee_module.find_all()) != 0:
                 for employee_row in service.employee_module.find_all():
-                    print("ID: " + employee_row[service.employee_module.ID_COL] +
+                    print("ID: " + str(employee_row[service.employee_module.ID_COL]) +
                           ", NOMBRE: " + employee_row[service.employee_module.EMPLOYEE_NAME_COL] +
                           ", APELLIDO: " + employee_row[service.employee_module.EMPLOYEE_LASTNAME_COL] +
-                          ", CÉDULA: " + employee_row[service.employee_module.EMPLOYEE_ID_COL] +
-                          ", SALARIO: " + employee_row[service.employee_module.EMPLOYEE_SALARY_COL] +
+                          ", CÉDULA: " + str(employee_row[service.employee_module.EMPLOYEE_ID_COL]) +
+                          ", SALARIO: " + str(employee_row[service.employee_module.EMPLOYEE_SALARY_COL]) +
                           ", POSICIÓN: " + employee_row[service.employee_module.EMPLOYEE_POSITION_COL]
                           )
             print("Por favor, seleccione una de las siguientes opciones:")
@@ -82,10 +82,10 @@ def route_mode_to_service(selection):
             print("\n-- CLIENTES --\n")
             if len(service.customer_module.find_all()) != 0:
                 for customer_row in service.customer_module.find_all():
-                    print("ID: " + customer_row[service.customer_module.ID_COL] +
+                    print("ID: " + str(customer_row[service.customer_module.ID_COL]) +
                           ", NOMBRE: " + customer_row[service.customer_module.CUSTOMER_NAME_COL] +
-                          ", CÉDULA: " + customer_row[service.customer_module.CUSTOMER_ID_COL] +
-                          ", NÚMERO DE TELÉFONO: " + customer_row[service.customer_module.CUSTOMER_PHONE_NUMBER_COL] +
+                          ", CÉDULA: " + str(customer_row[service.customer_module.CUSTOMER_ID_COL]) +
+                          ", NÚMERO DE TELÉFONO: " + str(customer_row[service.customer_module.CUSTOMER_PHONE_NUMBER_COL]) +
                           ", DIRECCIÓN: " + customer_row[service.customer_module.CUSTOMER_ADDRESS_COL]
                           )
             print("Por favor, seleccione una de las siguientes opciones:")
@@ -126,7 +126,7 @@ def route_mode_to_service(selection):
             print("\n-- PROVEEDORES --\n")
             if len(service.provider_module.find_all()) != 0:
                 for provider_row in service.provider_module.find_all():
-                    print("ID: " + provider_row[service.provider_module.ID_COL] +
+                    print("ID: " + str(provider_row[service.provider_module.ID_COL]) +
                           ", NOMBRE: " + provider_row[service.provider_module.PROVIDER_NAME_COL] +
                           ", TIPO: " + provider_row[service.provider_module.PROVIDER_TYPE_COL] +
                           ", RUTA - INICIO: " + provider_row[service.provider_module.PROVIDER_ROUTE_START_COL] +
@@ -145,7 +145,7 @@ def route_mode_to_service(selection):
                     str_type = str(input("Ingrese el tipo: "))
                     str_route_start = str(input("Ingrese el inicio de la ruta:"))
                     str_route_end = str(input("Ingrese el final de la ruta:"))
-                    es_continental = int(input("Ingrese si el servicio es continental (AERONAVE): "))
+                    es_continental = str(input("Ingrese si el servicio es continental (AERONAVE): "))
                     if service.provider_module.save(str_name, str_type, str_route_start, str_route_end,
                                                     es_continental):
                         print("Proveedor se ha guardo con éxito")
@@ -157,7 +157,7 @@ def route_mode_to_service(selection):
                     str_type = str(input("Ingrese el tipo: "))
                     str_route_start = str(input("Ingrese el inicio de la ruta:"))
                     str_route_end = str(input("Ingrese el final de la ruta:"))
-                    es_continental = int(input("Ingrese si el servicio es continental (AERONAVE): "))
+                    es_continental = str(input("Ingrese si el servicio es continental (AERONAVE): "))
                     if service.provider_module.update(int_id, str_name, str_type, str_route_start, str_route_end,
                                                       es_continental):
                         print("Proveedor se ha actualizado con éxito")
@@ -175,12 +175,12 @@ def route_mode_to_service(selection):
             print("\n-- PRODUCTOS --\n")
             if len(service.product_module.find_all()) != 0:
                 for product_row in service.product_module.find_all():
-                    print("ID: " + product_row[service.product_module.ID_COL] +
-                          ", NOMBRE: " + product_row[service.product_module.PRODUCT_NAME_COL] +
+                    print("ID: " + str(product_row[service.product_module.ID_COL]) +
+                          ", NOMBRE: " + str(product_row[service.product_module.PRODUCT_NAME_COL]) +
                           ", TIPO: " + product_row[service.product_module.PRODUCT_TYPE_COL] +
                           ", DESCRIPCIÓN: " + product_row[service.product_module.PRODUCT_DESCRIPTION_COL] +
                           ", FECHA DISPONIBLE: " + product_row[service.product_module.PRODUCT_SCHEDULE_COL] +
-                          ", PRECIO: " + product_row[service.product_module.PRODUCT_PRICE_COL]
+                          ", PRECIO: " + str(product_row[service.product_module.PRODUCT_PRICE_COL])
                           )
             print("Por favor, seleccione una de las siguientes opciones:")
             print("\t1. AGREGAR UN NUEVO PRODUCTO")
@@ -224,8 +224,8 @@ def route_mode_to_service(selection):
             print("\n-- VENTAS --\n")
             if len(service.sales_module.find_all()) != 0:
                 for sales_row in service.sales_module.find_all():
-                    print("ID de la venta: " + sales_row[service.sales_module.ID_COL] +
-                          ", monto facturado: " + sales_row[service.sales_module.SALES_TOTAL_COL] +
+                    print("ID de la venta: " + str(str(sales_row[service.sales_module.ID_COL])) +
+                          ", monto facturado: " + str(sales_row[service.sales_module.SALES_TOTAL_COL]) +
                           ", productos adquiridos: " + sales_row[service.sales_module.SALES_PRODUCTOS_ADQUIRIDOS_COL] +
                           ", método de pago: " + sales_row[service.sales_module.SALES_METODO_PAGO_COL] +
                           ", información del comprador: " + sales_row[service.sales_module.SALES_INFO_COMPRADOR_COL] +
@@ -245,7 +245,7 @@ def route_mode_to_service(selection):
                     str_metodo_de_pago = str(input("Ingrese el método de pago: "))
                     int_employee_id = int(input("Ingrese el id del empleado que realizo la venta: "))
                     int_customer_id = int(input("Ingrese el id del cliente que formo parte de la venta: "))
-                    str_fecha = int(input("Ingrese la fecha en la que se formalizó la venta: "))
+                    str_fecha = str(input("Ingrese la fecha en la que se formalizó la venta: "))
                     if service.sales_module.save(flt_total, str_productos_adquiridos, str_metodo_de_pago,
                                                  int_customer_id, int_employee_id, str_fecha):
                         print("Venta se ha guardo con éxito")
@@ -258,7 +258,7 @@ def route_mode_to_service(selection):
                     str_metodo_de_pago = str(input("Ingrese el método de pago: "))
                     int_employee_id = int(input("Ingrese el id del empleado que realizo la venta: "))
                     int_customer_id = int(input("Ingrese el id del cliente que formo parte de la venta: "))
-                    str_fecha = int(input("Ingrese la fecha en la que se formalizó la venta: "))
+                    str_fecha = str(input("Ingrese la fecha en la que se formalizó la venta: "))
                     if service.sales_module.update(int_id, flt_total, str_productos_adquiridos, str_metodo_de_pago,
                                                    int_customer_id, int_employee_id, str_fecha):
                         print("Venta se ha actualizado con éxito")

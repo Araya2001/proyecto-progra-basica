@@ -54,13 +54,16 @@ def save(employee_name,
          employee_position):
     try:
         last_id = service.csv_proxy.get_last_id(find_all()) + 1
-        data = [last_id, employee_name,
-                employee_lastname,
-                employee_id,
-                employee_salary,
-                employee_position]
-        service.csv_proxy.write_append(EMPLOYEE_CSV_FILE, data)
-        find_all().append(data)
+        service.csv_proxy.write_append(EMPLOYEE_CSV_FILE, [[last_id, employee_name,
+                                                           employee_lastname,
+                                                           employee_id,
+                                                           employee_salary,
+                                                           employee_position]])
+        find_all().append([last_id, employee_name,
+                           employee_lastname,
+                           employee_id,
+                           employee_salary,
+                           employee_position])
         return True
     except (AttributeError, TypeError, AssertionError):
         raise AssertionError("Variables no cuentan con el tipo de dato esperado!!!")
