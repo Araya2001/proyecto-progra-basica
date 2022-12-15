@@ -18,7 +18,7 @@ def find_all():
 def find_by_id(productos_id):
     try:
         for row in find_all():
-            if row[ID_COL] == productos_id:
+            if int(row[ID_COL]) == int(productos_id):
                 return row
     except (AttributeError, TypeError, AssertionError):
         raise AssertionError("Variables no cuenta con el tipo de dato esperado!!")
@@ -33,7 +33,7 @@ def update(productos_id, productos_name,
     is_valid = False
     try:
         for row in find_all():
-            if row[ID_COL] == productos_id:
+            if int(row[ID_COL]) == int(productos_id):
                 is_valid = True
                 find_all().remove(row)
         if is_valid:
@@ -52,7 +52,7 @@ def save(productos_name,
          productos_schedule,
          productos_price):
     try:
-        last_id = service.csv_proxy.get_last_id(find_all()) + 1
+        last_id = int(service.csv_proxy.get_last_id(find_all())) + 1
         service.csv_proxy.write_append(PRODUCT_CSV_FILE, [[last_id,
                                                           productos_name,
                                                           productos_type,
@@ -74,7 +74,7 @@ def save(productos_name,
 def delete(productos_id):
     try:
         for row in find_all():
-            if row[ID_COL] == productos_id:
+            if int(row[ID_COL]) == int(productos_id):
                 find_all().remove(row)
                 service.csv_proxy.write(PRODUCT_CSV_FILE, find_all())
                 return True

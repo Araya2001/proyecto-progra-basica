@@ -90,8 +90,8 @@ def route_mode_to_service(selection):
                           )
             print("Por favor, seleccione una de las siguientes opciones:")
             print("\t1. AGREGAR UN NUEVO CLIENTE")
-            print("\t2. ELIMINAR UN CLIENTE")
-            print("\t3. ACTUALIZAR UN CLIENTE")
+            print("\t2. ACTUALIZAR UN CLIENTE")
+            print("\t3. ELIMINAR UN CLIENTE")
             print("\t4. SALIR")
             selection_scoped = get_selection()
             if 1 <= selection_scoped <= 4:

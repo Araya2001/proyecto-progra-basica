@@ -18,7 +18,7 @@ def find_all():
 def find_by_id(id_provider):
     try:
         for row in find_all():
-            if row[ID_COL] == id_provider:
+            if int(row[ID_COL]) == int(id_provider):
                 return row
     except (AttributeError, TypeError, AssertionError):
         raise AssertionError("Variables no cuentan con el tipo de dato esperado!!!")
@@ -33,7 +33,7 @@ def update(id_employee, employee_name,
     is_valid = False
     try:
         for row in find_all():
-            if row[ID_COL] == id_employee:
+            if int(row[ID_COL]) == int(id_employee):
                 is_valid = True
                 find_all().remove(row)
         if is_valid:
@@ -53,7 +53,7 @@ def save(employee_name,
          employee_salary,
          employee_position):
     try:
-        last_id = service.csv_proxy.get_last_id(find_all()) + 1
+        last_id = int(service.csv_proxy.get_last_id(find_all())) + 1
         service.csv_proxy.write_append(EMPLOYEE_CSV_FILE, [[last_id, employee_name,
                                                            employee_lastname,
                                                            employee_id,
@@ -73,7 +73,7 @@ def save(employee_name,
 def delete(id_employee):
     try:
         for row in find_all():
-            if row[ID_COL] == id_employee:
+            if int(row[ID_COL]) == int(id_employee):
                 find_all().remove(row)
                 service.csv_proxy.write(EMPLOYEE_CSV_FILE, find_all())
                 return True
